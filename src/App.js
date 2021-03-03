@@ -5,7 +5,7 @@ import("./Dashboard");
 
 function App() {
 
-  // const [cart, setcart] = useState([])
+  
   const [cart, setCart] = useState([]);
   const [item, setItem] = useState([{
     CarName: "Audi",
@@ -36,31 +36,41 @@ function App() {
     lessThanZero: false,
   },
   ]);
-  function AddToCart(value) {
-    const exist = cart.find((x) => x._id === value._id)
-    if (exist) {
-      setCart(
-        cart.map((x) =>
-          x._id === value._id ? { ...exist, stock: exist.stock + 1 } : x
-        )
-      )
-      // var prevProducts = [...cartItem];
-      // prevProducts[index].stock =  prevProducts[index].stock + 1;
-      // setCartItem(prevProducts);
+  // function AddToCart(value) {
+  //   const exist = cart.find((x) => x._id === value._id)
+  //   if (exist) {
+  //     setCart(
+  //       cart.map((x) =>
+  //         x._id === value._id ? { ...exist, stock: exist.stock + 1 } : x
+  //       )
+  //     )
+  //     var prevProducts = [...cartItem];
+  //     prevProducts[index].stock =  prevProducts[index].stock + 1;
+  //     setCartItem(prevProducts);
 
 
-    } else {
-      setCart([...cart, { ...value, stock: 1 }])
-      console.log(value)
+  //   } else {
+  //     setCart([...cart, { ...value, stock: 1 }])
+  //     console.log(value)
+  //   }
+
+  // }
+
+
+
+    function AddCart(value) {
+      setCart([cart[value]])
+
+      return console.log(value)
+
+      
+
+
+
+
     }
 
-  }
 
-
-
-  //   function ADD() {
-  //     setItem(item + 1)
-  //   }
 
   // function Del() {
 
@@ -83,7 +93,7 @@ function App() {
           <p>{value.id}</p>
 
           <button onClick={()=>{
-            setCart(cart + "  " + value.CarName)
+            AddCart(value)
           }}>Add To Cart</button>
 
         </div>
